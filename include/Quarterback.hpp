@@ -17,7 +17,7 @@ public:
     unsigned interceptions;
     double interception_percentage;
     unsigned first_downs;
-    unsinged longest_pass;
+    unsigned longest_pass;
     double yards_per_attempt;
     double adjusted_yards_per_attempt;
     double yards_per_completion;
