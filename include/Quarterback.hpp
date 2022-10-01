@@ -1,9 +1,16 @@
 #ifndef QUARTERBACK_HPP
 #define QUARTERBACK_HPP
 
+#include <sstream>
+#include <string>
+#include <algorithm>
+#include <iostream>
+
 class Quarterback
 {
 public:
+    Quarterback(std::string&);
+    std::string name;
     unsigned age;
     unsigned games_played;
     unsigned games_started;
