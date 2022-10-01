@@ -6,5 +6,5 @@ all: $(ALL)
 clean:
 	rm -f obj/* bin/*
 
-bin/qb-graph-generator: src/main.cpp include/Quarterback.hpp
-	g++ $(FLAGS) -o bin/qb-graph-generator src/main.cpp
+bin/qb-stat-grapher: src/main.cpp include/Quarterback.hpp
+	g++ $(FLAGS) -o bin/qb-stat-grapher src/main.cpp
