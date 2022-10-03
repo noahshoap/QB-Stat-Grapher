@@ -26,6 +26,7 @@ int main (int argc, char** argv)
     int number_qbs;
     int i;
     int max_y;
+    int hash_index;
     double max_x;
     std::vector<Quarterback*> qbs;
     std::multimap<double, Quarterback*> sorted_qbs;
@@ -96,7 +97,7 @@ int main (int argc, char** argv)
     output << max_x;
     output << "\n  no_auto_hash_labels mhash 0 hash 2 shash 1" << std::endl;
 
-    output << "hash_labels fontsize 8" << std::endl;
+    output << "hash_labels fontsize 8 hjl" << std::endl;
 
     output << std::endl;
 
