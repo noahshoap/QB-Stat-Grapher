@@ -105,6 +105,8 @@ int main (int argc, char** argv)
 
     output << std::endl;
 
+    output << "hash_labels fontsize 12 rotate -60" << std::endl;
+
     /* Football field drawing */
     output << "newcurve marktype box marksize ";
     output << max_x << ' ';
@@ -168,8 +170,6 @@ int main (int argc, char** argv)
             std::cout << it->second->name << ' ' << it->second->stats[stat] << std::endl;
         }
     }
-
-    output << "hash_labels fontsize 12 rotate -60" << std::endl;
 
     file.close();
     output.close();
