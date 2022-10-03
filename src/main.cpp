@@ -118,6 +118,16 @@ int main (int argc, char** argv)
     
     output << std::endl;
 
+    /* Draw out numbers */
+    output << "newstring hjc vjc font Times-Italic lgray 1 fontsize 14 x 0.75" << std::endl;
+    output << std::endl;
+
+    output << "shell : echo \"\" | awk '{\\" << std::endl;
+    output << "\t\t for (i = 1; i < 10; i += 1) { \\" << std::endl;
+    output << "\t\t\t printf \"copystring y %d : %d0\\n\",i, i \\" << std::endl;
+    output << "\t\t} }'" << std::endl;
+    output << std::endl;
+
     file.close();
     output.close();
     return 0;
