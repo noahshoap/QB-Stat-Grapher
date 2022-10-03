@@ -8,6 +8,7 @@
 int main (int argc, char** argv)
 {
     std::ifstream file;
+    std::ofstream output;
     std::string line;
     std::string direction;
     std::string stat;
@@ -86,5 +87,38 @@ int main (int argc, char** argv)
         }
     }
 
+    output.open(argv[2]);
+    output << "newgraph\n" << std::endl;
+
+    /* X-Axis */
+    output << "xaxis" << std::endl;
+    output << "  min 0.2 ";
+    output << "max "; 
+    output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
+    output << " size ";
+    output << 5 * number_qbs;
+    output << "\n  o_auto_hash_labels mhash 0 hash 1 shash 1" << std::endl;
+
+    output << std::endl;
+
+    /* Y-Axis */
+    output << "yaxis" << std::endl;
+    output << "  min 0 max ";
+    output << sorted_qbs.rbegin()->second->stats[stat];
+    output << " size 6" << std::endl;
+    output << "  nodraw" << std::endl;
+
+    output << std::endl;
+
+    /* Football field drawing */
+    output << "newcurve marktype box marksize ";
+    output << ( (2.8 - 0.2) / 2 * number_qbs) << ' ';
+    output << sorted_qbs.rbegin()->second->stats[stat];
+    output << " cfill 0 .5 0 pts 1.5 5" << std::endl;
+    
+    output << std::endl;
+
+    file.close();
+    output.close();
     return 0;
 }
