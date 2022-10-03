@@ -5,6 +5,17 @@
 #include <exception>
 #include "Quarterback.hpp"
 
+double round(double n)
+{
+    // round down
+    double a = (n / 10) * 10;
+     
+    // add 10
+    double b = a + 10;
+ 
+    return b;
+}
+
 int main (int argc, char** argv)
 {
     std::ifstream file;
@@ -88,7 +99,7 @@ int main (int argc, char** argv)
         }
     }
 
-    max_y = sorted_qbs.rbegin()->second->stats[stat];
+    max_y = round(sorted_qbs.rbegin()->second->stats[stat]);
 
 
     output.open(argv[2]);
@@ -106,16 +117,16 @@ int main (int argc, char** argv)
     /* Y-Axis */
     output << "yaxis" << std::endl;
     output << "  min 0 max ";
-    output << sorted_qbs.rbegin()->second->stats[stat] << std::endl;
+    output << max_y << std::endl;
 
     output << std::endl;
 
     /* Football field drawing */
     output << "newcurve marktype box marksize ";
     output << ( (2.8 - 0.2) / 2 * number_qbs) << ' ';
-    output << sorted_qbs.rbegin()->second->stats[stat];
+    output << max_y;
     output << " cfill 0 .5 0 pts ";
-    output << (((2.8 - 0.2) / 2 * number_qbs) + 0.2) / 2 << ' ' << sorted_qbs.rbegin()->second->stats[stat] / 2 << std::endl;
+    output << (((2.8 - 0.2) / 2 * number_qbs) + 0.2) / 2 << ' ' << max_y / 2 << std::endl;
     
     output << std::endl;
 
