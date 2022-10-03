@@ -107,7 +107,7 @@ int main (int argc, char** argv)
 
     /* Football field drawing */
     output << "newcurve marktype box marksize ";
-    output << ( (2.8 - 0.2) / 2 * number_qbs) << ' ';
+    output << max_x << ' ';
     output << max_y;
     output << " cfill 0 .5 0 pts ";
     output << (max_x) / 2 << ' ' << (double) max_y / (double) 2 << std::endl;
