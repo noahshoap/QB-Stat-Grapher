@@ -5,13 +5,13 @@
 #include <exception>
 #include "Quarterback.hpp"
 
-double round(double n)
+int round(int n)
 {
     // round down
-    double a = (n / 10) * 10;
+    int a = (n / 10) * 10;
      
     // add 10
-    double b = a + 10;
+    int b = a + 10;
  
     return b;
 }
@@ -126,7 +126,7 @@ int main (int argc, char** argv)
     output << ( (2.8 - 0.2) / 2 * number_qbs) << ' ';
     output << max_y;
     output << " cfill 0 .5 0 pts ";
-    output << (((2.8 - 0.2) / 2 * number_qbs) + 0.2) / 2 << ' ' << max_y / 2 << std::endl;
+    output << (((2.8 - 0.2) / 2 * number_qbs) + 0.2) / 2 << ' ' << (double) max_y / (double) 2 << std::endl;
     
     output << std::endl;
 
