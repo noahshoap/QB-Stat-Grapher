@@ -88,6 +88,14 @@ int main (int argc, char** argv)
 
     output.open(argv[2]);
     output << "newgraph\n" << std::endl;
+    output << "title: ";
+
+    if (direction == "top") output << "Top ";
+    else output << "Bottom ";
+
+    output << number_qbs << " QBs by " << stat << std::endl;
+
+    output << std::endl;
 
     /* X-Axis */
     output << "xaxis" << std::endl;
@@ -102,6 +110,7 @@ int main (int argc, char** argv)
 
     /* Y-Axis */
     output << "yaxis" << std::endl;
+    output << "  label : " << stat << std::endl;
     output << "  min 0 max ";
     output << max_y << std::endl;
 
