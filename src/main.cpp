@@ -138,7 +138,7 @@ int main (int argc, char** argv)
 
     /* Draw out 1-yard marks */
     output << "shell : echo \"\" | awk '{\\" << std::endl;
-    output << "\t\tfor (i = 0; i < ";
+    output << "\t\tfor (i = -1; i < ";
     output << number_qbs;
     output << "; i += 1) { \\" << std::endl;
     output << "\t\t\tfor (j = 1; j < 10; j += .1) { \\" << std::endl;
