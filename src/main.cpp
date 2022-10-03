@@ -114,7 +114,7 @@ int main (int argc, char** argv)
     output << "newcurve marktype box marksize ";
     output << ( (2.8 - 0.2) / 2 * number_qbs) << ' ';
     output << sorted_qbs.rbegin()->second->stats[stat];
-    output << " cfill 0 .5 0 pts 1.5 5 ";
+    output << " cfill 0 .5 0 pts ";
     output << (((2.8 - 0.2) / 2 * number_qbs) + 0.2) / 2 << ' ' << sorted_qbs.rbegin()->second->stats[stat] / 2 << std::endl;
     
     output << std::endl;
