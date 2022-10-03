@@ -160,8 +160,8 @@ int main (int argc, char** argv)
 
     int index = 1;
 
-    football_x = max_x * 0.18;
-    football_y = max_y * 0.0572;
+    football_x = max_x * 0.0633;
+    football_x = max_y * 0.0572;
 
     /* Print out QB names at hash marks */
     if (direction == "top")
