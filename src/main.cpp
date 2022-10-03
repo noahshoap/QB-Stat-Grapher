@@ -18,9 +18,9 @@ int main (int argc, char** argv)
     Quarterback *tmp;
 
     /* Exit if not enough args */
-    if (argc != 5)
+    if (argc != 6)
     {
-        std::cerr << "usage: ./qb-stat-grapher file.csv top|bottom stat NUM_QBS" << std::endl;
+        std::cerr << "usage: ./qb-stat-grapher file.csv output.jgr top|bottom stat NUM_QBS" << std::endl;
         return -1; 
     }
 
@@ -35,9 +35,9 @@ int main (int argc, char** argv)
 
     try
     {
-        direction = argv[2];
-        stat = argv[3];
-        number_qbs = std::stod(argv[4]);
+        direction = argv[3];
+        stat = argv[4];
+        number_qbs = std::stod(argv[5]);
     }
     catch (std::exception& e)
     {
