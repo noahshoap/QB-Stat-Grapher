@@ -97,7 +97,7 @@ int main (int argc, char** argv)
     output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
     output << " size ";
     output << 5 * number_qbs;
-    output << "\n  o_auto_hash_labels mhash 0 hash 1 shash 1" << std::endl;
+    output << "\n  no_auto_hash_labels mhash 0 hash 1 shash 1" << std::endl;
 
     output << std::endl;
 
