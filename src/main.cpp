@@ -159,6 +159,12 @@ int main (int argc, char** argv)
             output << "xaxis" << std::endl;
             output << "hash_label at " << index << " : " << it->second->first_name << " ";
             output << it->second->last_name << std::endl;
+
+            /* Start drawing footballs */
+            output << "newcurve eps football.eps marksize 1 2.86 pts" << std::endl;
+            output << "\tshell : echo \"\" | awk '{ for (i = 0; i < 10; i++) printf \"1, %.0.286f\\n\", i+1 }'" << std::endl;
+            output << "2 .5" << std::endl;
+
             index += 2;
         }
     }
@@ -170,10 +176,6 @@ int main (int argc, char** argv)
             std::cout << it->second->name << ' ' << it->second->stats[stat] << std::endl;
         }
     }
-
-    /* Start drawing footballs */
-    output << "newcurve eps football.eps marksize 1 2.86 pts" << std::endl;
-    output << "\tshell : echo \"\" | awk '{ for (i = 0; i < 10; i++) printf \"1, %.0.286f\\n\", i+1 }'" << std::endl;
 
     file.close();
     output.close();
