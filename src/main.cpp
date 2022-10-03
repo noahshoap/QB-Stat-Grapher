@@ -105,7 +105,7 @@ int main (int argc, char** argv)
 
     output << std::endl;
 
-    output << "hash_labels fontsize 12 rotate -60" << std::endl;
+    output << "hash_labels fontsize 12 font Times-Italic hjl vjc rotate -60" << std::endl;
 
     /* Football field drawing */
     output << "newcurve marktype box marksize ";
