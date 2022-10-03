@@ -26,6 +26,7 @@ int main (int argc, char** argv)
     int number_qbs;
     int i;
     int max_y;
+    int max_x;
     std::vector<Quarterback*> qbs;
     std::multimap<double, Quarterback*> sorted_qbs;
     Quarterback *tmp;
@@ -83,7 +84,7 @@ int main (int argc, char** argv)
     }
 
     max_y = round(sorted_qbs.rbegin()->second->stats[stat]);
-
+    max_x = ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
 
     output.open(argv[2]);
     output << "newgraph\n" << std::endl;
@@ -92,7 +93,7 @@ int main (int argc, char** argv)
     output << "xaxis" << std::endl;
     output << "  min 0.2 ";
     output << "max "; 
-    output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
+    output << max_x;
     output << "\n  no_auto_hash_labels mhash 0 hash 2 shash 1" << std::endl;
 
     output << std::endl;
@@ -109,7 +110,7 @@ int main (int argc, char** argv)
     output << ( (2.8 - 0.2) / 2 * number_qbs) << ' ';
     output << max_y;
     output << " cfill 0 .5 0 pts ";
-    output << (((2.8 - 0.2) / 2 * number_qbs) + 0.2) / 2 << ' ' << (double) max_y / (double) 2 << std::endl;
+    output << (max_x) / 2 << ' ' << (double) max_y / (double) 2 << std::endl;
     
     output << std::endl;
 
@@ -129,7 +130,7 @@ int main (int argc, char** argv)
     output << "shell : echo \"\" | awk '{\\" << std::endl;
     output << "\t\tfor (i = 1; i < " << max_y <<  "; i += " << max_y / 10 << ") { \\" << std::endl;
     output << "\t\t\tprintf (\"newline gray 1 pts 0 %d ";
-    output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
+    output << max_x;
     output << " %d\\n\", i - 1, i - 1); \\" << std::endl;
     output << "\t\t} }'" << std::endl;
     output << std::endl;
