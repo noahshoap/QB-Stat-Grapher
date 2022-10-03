@@ -169,6 +169,8 @@ int main (int argc, char** argv)
         }
     }
 
+    output << "hash_labels fontsize 12 rotate -60" << std::endl;
+
     file.close();
     output.close();
     return 0;
