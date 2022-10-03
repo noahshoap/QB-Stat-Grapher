@@ -104,7 +104,7 @@ int main (int argc, char** argv)
     /* Y-Axis */
     output << "yaxis" << std::endl;
     output << "  min 0 max 10";
-    output << " size 6" << std::endl;
+    output << " size " << 6 * number_qbs / 2;
     output << "  nodraw" << std::endl;
 
     output << std::endl;
