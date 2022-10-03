@@ -63,9 +63,9 @@ int main (int argc, char** argv)
         }
         qbs.push_back(tmp);
 
-        if (stat == "touchdowns")
+        if (tmp->stats.find(stat) != tmp->stats.end())
         {
-            sorted_qbs.insert(std::make_pair(tmp->touchdowns, tmp));
+            sorted_qbs.insert(std::make_pair(tmp->stats[stat], tmp));
         }
     }
 
@@ -74,21 +74,15 @@ int main (int argc, char** argv)
         i = 0;
         for (auto it = sorted_qbs.rbegin(); it != sorted_qbs.rend() && i != number_qbs; ++it, ++i)
         {
-            if (stat == "touchdowns")
-            {
-                std::cout << it->second->name << ' ';
-                std::cout << it->second->team << ' ';
-                std::cout << it->second->age << ' ';
-                std::cout << it->second->position << ' ';
-                std::cout << it->second->games_played << ' ';
-                std::cout << it->second->games_started << ' ';
-                std::cout << it->second->record << ' ';
-                std::cout << it->second->completions << ' ';
-                std::cout << it->second->attempts << ' ';
-                std::cout << it->second->completion_percentage << ' ';
-                std::cout << it->second->yards << ' ';
-                std::cout << it->second->touchdowns << std::endl;
-            }
+            std::cout << it->second->name << ' ' << it->second->stats[stat] << std::endl;
+        }
+    }
+    else if (direction == "bottom")
+    {
+        i = 0;
+        for (auto it = sorted_qbs.begin(); it != sorted_qbs.end() && i != number_qbs; ++it, ++i)
+        {
+            std::cout << it->second->name << ' ' << it->second->stats[stat] << std::endl;
         }
     }
 

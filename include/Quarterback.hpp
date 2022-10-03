@@ -3,6 +3,7 @@
 
 #include <sstream>
 #include <string>
+#include <map>
 #include <algorithm>
 #include <iostream>
 
@@ -10,6 +11,7 @@ class Quarterback
 {
 public:
     Quarterback(std::string&);
+    std::map<std::string, double> stats;
     std::string name;
     std::string team;
     std::string position;
