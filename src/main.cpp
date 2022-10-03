@@ -84,7 +84,7 @@ int main (int argc, char** argv)
     }
 
     max_y = round(sorted_qbs.rbegin()->second->stats[stat]);
-    max_x = ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
+    max_x = ((2.8 - 0.2) * 0.75 * number_qbs) + 0.2;
 
     output.open(argv[2]);
     output << "newgraph\n" << std::endl;
