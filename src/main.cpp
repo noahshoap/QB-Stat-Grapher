@@ -127,12 +127,20 @@ int main (int argc, char** argv)
     output << "\t\t} }'" << std::endl;
     output << std::endl;
 
-    /* Draw out lines */
+    /* Draw out 10-yard lines */
     output << "shell : echo \"\" | awk '{\\" << std::endl;
     output << "\t\tfor (i = 1; i < 10; i += 1) { \\" << std::endl;
     output << "\t\t\tprintf (\"newline gray 1 pts 1 %d ";
     output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
     output << " %d\\n\", i, i); \\" << std::endl;
+    output << "\t\t} }'" << std::endl;
+    output << std::endl;
+
+    /* Draw out 1-yard marks */
+    output << "shell : echo \"\" | awk '{\\" << std::endl;
+    output << "\t\tfor (i = 1; i < 10; i += .1) { \\" << std::endl;
+    output << "\t\t\tprintf \"newline gray 1 pts 0.97 %f 1.03 %f\\n\", i, i; \\" << std::endl;
+    output << "\t\t\tprintf \"newline gray 1 pts 1.97 %f 2.03 %f\\n\", i, i; \\" << std::endl;
     output << "\t\t} }'" << std::endl;
     output << std::endl;
 
