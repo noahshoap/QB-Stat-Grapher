@@ -152,7 +152,7 @@ int main (int argc, char** argv)
         for (auto it = sorted_qbs.rbegin(); it != sorted_qbs.rend() && i != number_qbs; ++it, ++i)
         {
             output << "xaxis" << std::endl;
-            output << "hash_label at " << i + 1 << ": " << it->second->first_name << "\\" << std::endl;
+            output << "hash_label at " << i + 1 << " : " << it->second->first_name << "\\" << std::endl;
             output << it->second->last_name << std::endl;
         }
     }
