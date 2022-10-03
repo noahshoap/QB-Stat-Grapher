@@ -26,11 +26,19 @@ int main (int argc, char** argv)
         return -1;
     }
 
+    /* Ignore first line */
+    std::getline(file, line);
+
     /* Read in all the QBs for this file */
     while (std::getline(file, line))
     {
         tmp = new Quarterback(line);
         qbs.push_back(tmp);
+    }
+
+    for (const auto& p : qbs)
+    {
+        std::cout << p->name << ' ' << p->game_winning_drives << std::endl;
     }
 
     return 0;

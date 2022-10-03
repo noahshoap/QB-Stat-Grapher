@@ -11,10 +11,12 @@ class Quarterback
 public:
     Quarterback(std::string&);
     std::string name;
+    std::string team;
+    std::string position;
     unsigned age;
     unsigned games_played;
     unsigned games_started;
-    /* Needs QB record */
+    std::string record;
     unsigned completions;
     unsigned attempts;
     double completion_percentage;
