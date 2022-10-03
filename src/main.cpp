@@ -93,7 +93,7 @@ int main (int argc, char** argv)
     if (direction == "top") output << "Top ";
     else output << "Bottom ";
 
-    output << number_qbs << " QBs by " << stat << std::endl;
+    output << "QBs by " << stat << std::endl;
 
     output << std::endl;
 
