@@ -103,8 +103,7 @@ int main (int argc, char** argv)
 
     /* Y-Axis */
     output << "yaxis" << std::endl;
-    output << "  min 0 max ";
-    output << sorted_qbs.rbegin()->second->stats[stat];
+    output << "  min 0 max 10";
     output << " size 6" << std::endl;
     output << "  nodraw" << std::endl;
 
@@ -123,8 +122,17 @@ int main (int argc, char** argv)
     output << std::endl;
 
     output << "shell : echo \"\" | awk '{\\" << std::endl;
-    output << "\t\t for (i = 1; i < 10; i += 1) { \\" << std::endl;
-    output << "\t\t\t printf \"copystring y %d : %d0\\n\",i, i \\" << std::endl;
+    output << "\t\tfor (i = 1; i < 10; i += 1) { \\" << std::endl;
+    output << "\t\t\tprintf \"copystring y %d : %d0\\n\",i, i \\" << std::endl;
+    output << "\t\t} }'" << std::endl;
+    output << std::endl;
+
+    /* Draw out lines */
+    output << "shell : echo \"\" | awk '{\\" << std::endl;
+    output << "\t\tfor (i = 1; i < 10; i += 1) { \\" << std::endl;
+    output << "\t\t\tprintf (\"newline gray 1 pts 1 %d ";
+    output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
+    output << " %d\\n\", i, i); \\" << std::endl;
     output << "\t\t} }'" << std::endl;
     output << std::endl;
 
