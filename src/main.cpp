@@ -192,7 +192,15 @@ int main (int argc, char** argv)
         i = 0;
         for (auto it = sorted_qbs.begin(); it != sorted_qbs.end() && i != number_qbs; ++it, ++i)
         {
-            std::cout << it->second->name << ' ' << it->second->stats[stat] << std::endl;
+            output << "xaxis" << std::endl;
+            output << "hash_label at " << index << " : " << it->second->first_name << " ";
+            output << it->second->last_name << std::endl;
+
+            /* Start drawing footballs */
+            output << "newcurve eps football.eps marksize " << football_x << " " << football_y << " pts" << std::endl;
+            output << "\tshell : echo \"\" | awk '{ for (i = 0; i < " << it->second->stats[stat] << "; i++) printf \"" << index << ", %f\\n\", i }'" << std::endl;
+
+            index += 2;
         }
     }
 
