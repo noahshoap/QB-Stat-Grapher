@@ -76,6 +76,13 @@ int main (int argc, char** argv)
             delete(tmp);
             continue;
         }
+
+        if (tmp->games_started < 8)
+        {
+            delete(tmp);
+            continue;
+        }
+
         qbs.push_back(tmp);
 
         if (tmp->stats.find(stat) != tmp->stats.end())
