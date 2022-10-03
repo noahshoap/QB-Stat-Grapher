@@ -96,6 +96,8 @@ int main (int argc, char** argv)
     output << max_x;
     output << "\n  no_auto_hash_labels mhash 0 hash 2 shash 1" << std::endl;
 
+    output << "hash_labels fontsize 8" << std::endl;
+
     output << std::endl;
 
     /* Y-Axis */
@@ -104,8 +106,6 @@ int main (int argc, char** argv)
     output << max_y << std::endl;
 
     output << std::endl;
-
-    output << "hash_labels fontsize 12 font Times-Italic hjl vjc rotate -60" << std::endl;
 
     /* Football field drawing */
     output << "newcurve marktype box marksize ";
