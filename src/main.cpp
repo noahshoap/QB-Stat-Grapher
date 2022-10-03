@@ -93,7 +93,7 @@ int main (int argc, char** argv)
     output << "  min 0.2 ";
     output << "max "; 
     output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
-    output << "\n  no_auto_hash_labels mhash 0 hash 1 shash 1" << std::endl;
+    output << "\n  no_auto_hash_labels mhash 0 hash 2 shash 1" << std::endl;
 
     output << std::endl;
 
