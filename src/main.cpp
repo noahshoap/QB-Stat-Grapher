@@ -145,7 +145,7 @@ int main (int argc, char** argv)
     /* Draw out 10-yard lines */
     output << "shell : echo \"\" | awk '{\\" << std::endl;
     output << "\t\tfor (i = 1; i < " << max_y <<  "; i += " << max_y / 10 << ") { \\" << std::endl;
-    output << "\t\t\tprintf (\"newline gray 1 pts 1 %d ";
+    output << "\t\t\tprintf (\"newline gray 1 pts 0 %d ";
     output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
     output << " %d\\n\", i - 1, i - 1); \\" << std::endl;
     output << "\t\t} }'" << std::endl;
@@ -153,7 +153,7 @@ int main (int argc, char** argv)
 
     /* Draw out 1-yard marks */
     output << "shell : echo \"\" | awk '{\\" << std::endl;
-    output << "\t\tfor (i = 0; i < ";
+    output << "\t\tfor (i = 0; i <= ";
     output << number_qbs;
     output << "; i += 1) { \\" << std::endl;
     output << "\t\t\tfor (j = 0; j < " << max_y << "; j += " << max_y /20 << ".1) { \\" << std::endl;
