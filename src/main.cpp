@@ -138,11 +138,11 @@ int main (int argc, char** argv)
 
     /* Draw out 1-yard marks */
     output << "shell : echo \"\" | awk '{\\" << std::endl;
-    output << "\t\tfor (i = 0.97; i < ";
+    output << "\t\tfor (i = 0; i < ";
     output << number_qbs;
     output << "; i += 1) { \\" << std::endl;
     output << "\t\t\tfor (j = 1; j < 10; j += .1) { \\" << std::endl;
-    output << "\t\t\t\tprintf \"newline gray 1 pts %f %f 1.03 %f\\n\",i, j, j; \\" << std::endl;
+    output << "\t\t\t\tprintf \"newline gray 1 pts %f %f %f %f\\n\",0.97 + i, j, 1.03 + i, j; \\" << std::endl;
    // output << "\t\t\tprintf \"newline gray 1 pts 1.97 %f 2.03 %f\\n\", i, i; \\" << std::endl;
     output << "\t\t} } }'" << std::endl;
     output << std::endl;
