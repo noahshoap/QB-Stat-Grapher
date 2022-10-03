@@ -88,12 +88,12 @@ int main (int argc, char** argv)
 
     output.open(argv[2]);
     output << "newgraph\n" << std::endl;
-    output << "title: ";
+    output << "title : ";
 
     if (direction == "top") output << "Top ";
     else output << "Bottom ";
 
-    output << "QBs by " << stat << std::endl;
+    output << number_qbs << " QBs by " << stat << std::endl;
 
     output << std::endl;
 
