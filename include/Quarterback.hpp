@@ -13,6 +13,8 @@ public:
     Quarterback(std::string&);
     std::map<std::string, double> stats;
     std::string name;
+    std::string first_name;
+    std::string last_name;
     std::string team;
     std::string position;
     unsigned age;

@@ -82,23 +82,6 @@ int main (int argc, char** argv)
         }
     }
 
-    if (direction == "top")
-    {
-        i = 0;
-        for (auto it = sorted_qbs.rbegin(); it != sorted_qbs.rend() && i != number_qbs; ++it, ++i)
-        {
-            std::cout << it->second->name << ' ' << it->second->stats[stat] << std::endl;
-        }
-    }
-    else if (direction == "bottom")
-    {
-        i = 0;
-        for (auto it = sorted_qbs.begin(); it != sorted_qbs.end() && i != number_qbs; ++it, ++i)
-        {
-            std::cout << it->second->name << ' ' << it->second->stats[stat] << std::endl;
-        }
-    }
-
     max_y = round(sorted_qbs.rbegin()->second->stats[stat]);
 
 
@@ -161,6 +144,26 @@ int main (int argc, char** argv)
    // output << "\t\t\tprintf \"newline gray 1 pts 1.97 %f 2.03 %f\\n\", i, i; \\" << std::endl;
     output << "\t\t} } }'" << std::endl;
     output << std::endl;
+
+    /* Print out QB names at hash marks */
+    if (direction == "top")
+    {
+        i = 0;
+        for (auto it = sorted_qbs.rbegin(); it != sorted_qbs.rend() && i != number_qbs; ++it, ++i)
+        {
+            output << "xaxis" << std::endl;
+            output << "hash_label at " << i + 1 << ": " << it->second->first_name << "\\" << std::endl;
+            output << it->second->last_name << std::endl;
+        }
+    }
+    else if (direction == "bottom")
+    {
+        i = 0;
+        for (auto it = sorted_qbs.begin(); it != sorted_qbs.end() && i != number_qbs; ++it, ++i)
+        {
+            std::cout << it->second->name << ' ' << it->second->stats[stat] << std::endl;
+        }
+    }
 
     file.close();
     output.close();

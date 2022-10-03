@@ -13,6 +13,20 @@ Quarterback::Quarterback(std::string& s)
     /* Read information into class */
     ss >> tmp;
     ss >> name;
+    size_t pos;
+
+    char c;
+    c = name.back();
+    while (c == '*' || c == '+')
+    {
+        name.pop_back();
+        c = name.back();
+    }
+
+    pos = name.find('_');
+    first_name = name.substr(0, pos);
+    last_name = name.substr(pos + 1);
+
     ss >> team;
     ss >> age;
     stats["age"] = age;
