@@ -172,8 +172,8 @@ int main (int argc, char** argv)
     }
 
     /* Start drawing footballs */
-    output << "newcurve eps football.eps marksize .35 1 pts" << std::endl;
-    output << "\tshell : echo \"\" | awk '{ for (i = 0; i < 10; i++) printf \"1, %.1f\\n\", i+.5 }'" << std::endl;
+    output << "newcurve eps football.eps marksize 1 2.86 pts" << std::endl;
+    output << "\tshell : echo \"\" | awk '{ for (i = 0; i < 10; i++) printf \"1, %.1f\\n\", i+3 }'" << std::endl;
 
     file.close();
     output.close();
