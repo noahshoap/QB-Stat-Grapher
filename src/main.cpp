@@ -96,7 +96,7 @@ int main (int argc, char** argv)
     output << max_x;
     output << "\n  no_auto_hash_labels mhash 0 hash 2 shash 1" << std::endl;
 
-    output << "hash_labels fontsize 8 hjl" << std::endl;
+    output << "hash_labels fontsize 8 vjt rotate -45" << std::endl;
 
     output << std::endl;
 
@@ -157,7 +157,7 @@ int main (int argc, char** argv)
         for (auto it = sorted_qbs.rbegin(); it != sorted_qbs.rend() && i != number_qbs; ++it, ++i)
         {
             output << "xaxis" << std::endl;
-            output << "hash_label at " << index << " : " << it->second->first_name << "\\" << std::endl;
+            output << "hash_label at " << index << " : " << it->second->first_name << " ";
             output << it->second->last_name << std::endl;
             index += 2;
         }
