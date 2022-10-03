@@ -14,6 +14,7 @@ int main (int argc, char** argv)
     std::string stat;
     int number_qbs;
     int i;
+    int max_y;
     std::vector<Quarterback*> qbs;
     std::multimap<double, Quarterback*> sorted_qbs;
     Quarterback *tmp;
@@ -87,6 +88,9 @@ int main (int argc, char** argv)
         }
     }
 
+    max_y = sorted_qbs.rbegin()->second->stats[stat];
+
+
     output.open(argv[2]);
     output << "newgraph\n" << std::endl;
 
@@ -95,29 +99,28 @@ int main (int argc, char** argv)
     output << "  min 0.2 ";
     output << "max "; 
     output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
-    output << " size ";
-    output << 5 * number_qbs / 2;
     output << "\n  no_auto_hash_labels mhash 0 hash 1 shash 1" << std::endl;
 
     output << std::endl;
 
     /* Y-Axis */
     output << "yaxis" << std::endl;
-    output << "  min 0 max 10";
-    output << " size " << 6 * number_qbs / 2;
-    output << "  nodraw" << std::endl;
+    output << "  min 0 max ";
+    output << sorted_qbs.rbegin()->second->stats[stat] << std::endl;
 
     output << std::endl;
 
     /* Football field drawing */
     output << "newcurve marktype box marksize ";
     output << ( (2.8 - 0.2) / 2 * number_qbs) << ' ';
-    output << 10;
-    output << " cfill 0 .5 0 pts 1.5 5" << std::endl;
+    output << sorted_qbs.rbegin()->second->stats[stat];
+    output << " cfill 0 .5 0 pts 1.5 5 ";
+    output << (((2.8 - 0.2) / 2 * number_qbs) + 0.2) / 2 << ' ' << sorted_qbs.rbegin()->second->stats[stat] / 2 << std::endl;
     
     output << std::endl;
 
     /* Draw out numbers */
+/*
     output << "newstring hjc vjc font Times-Italic lgray 1 fontsize 14 x 0.75" << std::endl;
     output << std::endl;
 
@@ -126,13 +129,14 @@ int main (int argc, char** argv)
     output << "\t\t\tprintf \"copystring y %d : %d0\\n\",i, i \\" << std::endl;
     output << "\t\t} }'" << std::endl;
     output << std::endl;
+*/
 
     /* Draw out 10-yard lines */
     output << "shell : echo \"\" | awk '{\\" << std::endl;
-    output << "\t\tfor (i = 1; i < 10; i += 1) { \\" << std::endl;
+    output << "\t\tfor (i = 1; i < " << max_y <<  "; i += " << max_y / 10 << ") { \\" << std::endl;
     output << "\t\t\tprintf (\"newline gray 1 pts 1 %d ";
     output << ((2.8 - 0.2) / 2 * number_qbs) + 0.2;
-    output << " %d\\n\", i, i); \\" << std::endl;
+    output << " %d\\n\", i - 1, i - 1); \\" << std::endl;
     output << "\t\t} }'" << std::endl;
     output << std::endl;
 
@@ -141,7 +145,7 @@ int main (int argc, char** argv)
     output << "\t\tfor (i = 0; i < ";
     output << number_qbs;
     output << "; i += 1) { \\" << std::endl;
-    output << "\t\t\tfor (j = 0; j < 10; j += .1) { \\" << std::endl;
+    output << "\t\t\tfor (j = 0; j < " << max_y << "; j += " << max_y /20 << ".1) { \\" << std::endl;
     output << "\t\t\t\tprintf \"newline gray 1 pts %f %f %f %f\\n\",0.97 + i, j, 1.03 + i, j; \\" << std::endl;
    // output << "\t\t\tprintf \"newline gray 1 pts 1.97 %f 2.03 %f\\n\", i, i; \\" << std::endl;
     output << "\t\t} } }'" << std::endl;
