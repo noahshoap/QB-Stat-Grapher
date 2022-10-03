@@ -112,7 +112,7 @@ int main (int argc, char** argv)
     /* Football field drawing */
     output << "newcurve marktype box marksize ";
     output << ( (2.8 - 0.2) / 2 * number_qbs) << ' ';
-    output << sorted_qbs.rbegin()->second->stats[stat];
+    output << 10;
     output << " cfill 0 .5 0 pts 1.5 5" << std::endl;
     
     output << std::endl;
@@ -138,10 +138,13 @@ int main (int argc, char** argv)
 
     /* Draw out 1-yard marks */
     output << "shell : echo \"\" | awk '{\\" << std::endl;
-    output << "\t\tfor (i = 1; i < 10; i += .1) { \\" << std::endl;
-    output << "\t\t\tprintf \"newline gray 1 pts 0.97 %f 1.03 %f\\n\", i, i; \\" << std::endl;
-    output << "\t\t\tprintf \"newline gray 1 pts 1.97 %f 2.03 %f\\n\", i, i; \\" << std::endl;
-    output << "\t\t} }'" << std::endl;
+    output << "\t\tfor (i = 0; i < ";
+    output << number_qbs;
+    output << "; i+= 1) { \\" << std::endl;
+    output << "\t\t\tfor (j = 1; j < 10; j += .1) { \\" << std::endl;
+    output << "\t\t\t\tprintf \"newline gray 1 pts %f %f 1.03 %f\\n\",0.97 + i, j, j; \\" << std::endl;
+   // output << "\t\t\tprintf \"newline gray 1 pts 1.97 %f 2.03 %f\\n\", i, i; \\" << std::endl;
+    output << "\t\t} } }'" << std::endl;
     output << std::endl;
 
     file.close();
