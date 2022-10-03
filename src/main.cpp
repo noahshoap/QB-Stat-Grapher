@@ -145,6 +145,8 @@ int main (int argc, char** argv)
     output << "\t\t} } }'" << std::endl;
     output << std::endl;
 
+    int index = 1;
+
     /* Print out QB names at hash marks */
     if (direction == "top")
     {
@@ -152,7 +154,7 @@ int main (int argc, char** argv)
         for (auto it = sorted_qbs.rbegin(); it != sorted_qbs.rend() && i != number_qbs; ++it, ++i)
         {
             output << "xaxis" << std::endl;
-            output << "hash_label at " << i + 1 << " : " << it->second->first_name << "\\" << std::endl;
+            output << "hash_label at " << index + 2 << " : " << it->second->first_name << "\\" << std::endl;
             output << it->second->last_name << std::endl;
         }
     }
