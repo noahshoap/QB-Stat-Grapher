@@ -26,7 +26,6 @@ int main (int argc, char** argv)
     int number_qbs;
     int i;
     int max_y;
-    int hash_index;
     double max_x;
     std::vector<Quarterback*> qbs;
     std::multimap<double, Quarterback*> sorted_qbs;
