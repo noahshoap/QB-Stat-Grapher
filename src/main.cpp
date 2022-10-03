@@ -96,7 +96,7 @@ int main (int argc, char** argv)
     output << max_x;
     output << "\n  no_auto_hash_labels mhash 0 hash 2 shash 1" << std::endl;
 
-    output << "hash_labels fontsize 8 vjt rotate -45" << std::endl;
+    output << "hash_labels fontsize 8 hjr vjt rotate -45" << std::endl;
 
     output << std::endl;
 
