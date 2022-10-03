@@ -27,6 +27,7 @@ int main (int argc, char** argv)
     int i;
     int max_y;
     double max_x;
+    double football_x, football_y;
     std::vector<Quarterback*> qbs;
     std::multimap<double, Quarterback*> sorted_qbs;
     Quarterback *tmp;
@@ -159,6 +160,9 @@ int main (int argc, char** argv)
 
     int index = 1;
 
+    football_x = max_x * 0.18;
+    football_y = max_y * 0.0572;
+
     /* Print out QB names at hash marks */
     if (direction == "top")
     {
@@ -170,7 +174,7 @@ int main (int argc, char** argv)
             output << it->second->last_name << std::endl;
 
             /* Start drawing footballs */
-            output << "newcurve eps football.eps marksize 1 2.86 pts" << std::endl;
+            output << "newcurve eps football.eps marksize " << football_x << " " << football_y << " pts" << std::endl;
             output << "\tshell : echo \"\" | awk '{ for (i = 0; i < " << it->second->stats[stat] << "; i++) printf \"" << index << ", %f\\n\", i }'" << std::endl;
 
             index += 2;
