@@ -30,7 +30,8 @@ Firstly, clone the repo.
 Secondly, once in the repo directory, build the executable.
 ```make clean && make all```
 
-Thirdly, run the generation to generate the .jpg files.
+Thirdly, run ```make generate``` to generate the .jpgs.  This should put the JPGs in the ./image_results/ directory.
+
 Feel free to play around with the executable's command-line args yourself, but not all stats are probably going to graph well so keep that in mind.
 
 ## Credit
