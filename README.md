@@ -42,4 +42,4 @@ I also initially got the idea to do something football related after seeing what
 ## Examples
 ```./bin/qb-stat-grapher 2021.csv tmp.jgr top touchdowns 8```
 generates the following jpg:
-[](./sample_images/top_eight_touchdowns.jpg)
+![](./sample_images/top_eight_touchdowns.jpg)
