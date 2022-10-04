@@ -43,3 +43,9 @@ I also initially got the idea to do something football related after seeing what
 ```./bin/qb-stat-grapher 2021.csv tmp.jgr top touchdowns 8```
 generates the following jpg:
 ![](./sample_images/top_eight_touchdowns.jpg)
+
+```./bin/qb-stat-grapher 2021.csv tmp.jgr bottom yards 4```
+generates the following jpg:
+![](./sample_images/bottom_four_yards.jpg)
+
+There are more example images in the sample_images directory.  The graph name is descriptive enough to deduce what command line args were used.
