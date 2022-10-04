@@ -1,3 +1,7 @@
+/* main.cpp
+ * Noah Shoap
+ * Reads in .csv file, sorts it into map keyed off command-arg stat, creates a jgraph file
+*/
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -5,6 +9,7 @@
 #include <exception>
 #include "Quarterback.hpp"
 
+// round integer to higher 10
 int round(int n)
 {
     // round down
@@ -48,6 +53,7 @@ int main (int argc, char** argv)
         return -1;
     }
 
+    /* Try to parse command line args; exit if exception occurs */
     try
     {
         direction = argv[3];
@@ -60,10 +66,6 @@ int main (int argc, char** argv)
         std::cerr << "Something is wrong with your command line args." << std::endl;
         return -1;
     }
-
-    std::cout << direction << ' ';
-    std::cout << stat << ' ';
-    std::cout << number_qbs << std::endl;
     /* Ignore first line */
     std::getline(file, line);
 
@@ -71,30 +73,44 @@ int main (int argc, char** argv)
     while (std::getline(file, line))
     {
         tmp = new Quarterback(line);
+        
+        /* If player is not a QB, ignore that player */
         if (!(tmp->position == "qb" || tmp->position == "QB"))
         {
-            delete(tmp);
+            delete tmp;
             continue;
         }
 
+        /* If player has not started around half the season, ignore */
         if (tmp->games_started < 8)
         {
-            delete(tmp);
+            delete tmp;
             continue;
         }
 
+        /* Insert quarterback into QB vector */
         qbs.push_back(tmp);
 
+        /* Verify that the stat we're looking for exists. */
         if (tmp->stats.find(stat) != tmp->stats.end())
         {
             sorted_qbs.insert(std::make_pair(tmp->stats[stat], tmp));
         }
+        else
+        {
+            std::cerr << "The stat '" << stat << "' does not exist.  Please try another one." << std::endl;
+            return -1; 
+        }
     }
 
+    /* Set dimensions of football grid */
     max_y = round(sorted_qbs.rbegin()->second->stats[stat]);
     max_x = ((2.8 - 0.2) * 0.75 * number_qbs) + 0.2;
 
+    /* Open jgraph file */
     output.open(argv[2]);
+
+    /* Output newgraph, title information */
     output << "newgraph\n" << std::endl;
     output << "title : ";
 
@@ -111,7 +127,6 @@ int main (int argc, char** argv)
     output << "max "; 
     output << max_x;
     output << "\n  no_auto_hash_labels mhash 0 hash 2 shash 1" << std::endl;
-
     output << "hash_labels fontsize 8 hjl vjt rotate -45" << std::endl;
 
     output << std::endl;
@@ -132,18 +147,6 @@ int main (int argc, char** argv)
     output << (max_x) / 2 << ' ' << (double) max_y / (double) 2 << std::endl;
     
     output << std::endl;
-
-    /* Draw out numbers */
-/*
-    output << "newstring hjc vjc font Times-Italic lgray 1 fontsize 14 x 0.75" << std::endl;
-    output << std::endl;
-
-    output << "shell : echo \"\" | awk '{\\" << std::endl;
-    output << "\t\tfor (i = 1; i < 10; i += 1) { \\" << std::endl;
-    output << "\t\t\tprintf \"copystring y %d : %d0\\n\",i, i \\" << std::endl;
-    output << "\t\t} }'" << std::endl;
-    output << std::endl;
-*/
 
     /* Draw out 10-yard lines */
     output << "shell : echo \"\" | awk '{\\" << std::endl;
@@ -204,7 +207,16 @@ int main (int argc, char** argv)
         }
     }
 
+    /* Close files */
     file.close();
     output.close();
+
+    /* Free QB memory */
+    for (size_t j = 0; j < qbs.size(); ++j)
+    {
+        tmp = qbs[j];
+        delete tmp;
+    }
+
     return 0;
 }
