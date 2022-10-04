@@ -21,3 +21,5 @@ generate:
 	./jgraph -P ./jgraph_files/top_four_longest.jgr | ps2pdf - | convert -density 300 - -quality 100 ./image_results/top_four_longest.jpg
 	./bin/qb-stat-grapher 2021.csv ./jgraph_files/top_four_age.jgr top age 4
 	./jgraph -P ./jgraph_files/top_four_age.jgr | ps2pdf - | convert -density 300 - -quality 100 ./image_results/top_four_age.jpg
+	./bin/qb-stat-grapher 2021.csv ./jgraph_files/top_four_interceptions.jgr top interceptions 4
+	./jgraph -P ./jgraph_files/top_four_interceptions.jgr | ps2pdf - | convert -density 300 - -quality 100 ./image_results/top_four_interceptions.jpg
